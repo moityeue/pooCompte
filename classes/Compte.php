@@ -2,7 +2,7 @@
 /*
  * Objet Compte bancaire
  */
-class Compte
+abstract class Compte
 {
     //PROPRIETES//
 
@@ -11,18 +11,15 @@ class Compte
     *
     * @var string
     */
-    private $titulaire;
+    private string $titulaire;
 
     /**
      * Solde du compte
      *
      * @var float
      */
-    private $solde;
+    protected float $solde;
      
-    //Constantes 
-    const TAUX_INTERETS = 100;
-
 
     //METHODES//
     /**
@@ -38,9 +35,13 @@ class Compte
 
 
         // on attribue le montant à la propriété solde 
-            $this->solde = $montant + ($montant * self::TAUX_INTERETS/100);
+            $this->solde = $montant;
     }
 
+        public function __toString()
+        {
+            return "Vous visualisez le compte de {$this->titulaire}, le solde est de {$this->solde} euros";
+        }
         //Accesseurs
         /**
          * Getter de titulaire - Retounes la valeur du titulaire du compte

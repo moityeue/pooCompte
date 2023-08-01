@@ -1,16 +1,17 @@
 <?php
 require_once 'classes/Compte.php';
+require_once 'classes/CompteCourant.php';
+require_once 'classes/CompteEpargne.php';
 
 //On instancie le compte
 
-$compte1 = new Compte('Uno', 300);
+$compte1 = new CompteCourant('Quatro', 500, 200);
 
 //$compte1->solde = '4';
 //$compte1->titulaire = 'al';
 
 //on depose 100Euros
- //$compte1->deposer(100);
-// $compte1->retirer(80);
+//$compte1->deposer(100);
 
 // $compte1->voirSolde();
 
@@ -19,10 +20,15 @@ $compte1 = new Compte('Uno', 300);
 // $compte1->setTitulaire("");
 // $compte1->setSolde(500);
 //echo "Le taux d'intérèt est de : " . Compte::TAUX_INTERETS . "%";
+// $compte1->setDecouvert(150);
+ $compte1->retirer(200);
 
  var_dump($compte1);
 
-
+$compteEpargne = new CompteEpargne('Al' , 300, 4);
+var_dump($compteEpargne);
+$compteEpargne->verserInterets();
+var_dump($compteEpargne);
 // $compte2 = new Compte('Poumba', 10);
 
 // //$compte2->solde = '1 euro';
