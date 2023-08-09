@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Banque;
+use App\Client\Compte as CompteClient;
 /*
  * Objet Compte bancaire
  */
@@ -9,9 +12,9 @@ abstract class Compte
    /**
     * Titulaire du compte
     *
-    * @var string
+    * @var CompteClient
     */
-    private string $titulaire;
+    private CompteClient $titulaire;
 
     /**
      * Solde du compte
@@ -25,13 +28,13 @@ abstract class Compte
     /**
      * Constructeur du compte bancaire
      *
-     * @param string $nom = Nom du titulaire
+     * @param CompteClient $compte = Compte client du titulaire
      * @param float $montant = montant du solde
      */
-    public function __construct(string $nom, float $montant = 200)
+    public function __construct(CompteClient $compte, float $montant = 200)
     {
         // on attribue le nom à la propriété titulaire de l'instance créée
-            $this->titulaire = $nom;
+            $this->titulaire = $compte;
 
 
         // on attribue le montant à la propriété solde 
@@ -46,25 +49,25 @@ abstract class Compte
         /**
          * Getter de titulaire - Retounes la valeur du titulaire du compte
          *
-         * @return string
+         * @return CompteClient
          */
-    public function getTitulaire(): string
+    public function getTitulaire(): CompteClient
     {
         return $this->titulaire;
     }
 
     /**
-     * Modifie le nom du titulaire et reournes l'objet
+     * Modifie le compte du titulaire et reournes l'objet
      *
-     * @param string $nom -> Nom du titulaire
+     * @param CompteClient $nom -> CompteClient du titulaire
      * @return Compte Compte bancaire
      */
-    public function setTitulaire(string $nom): self //(=la classe elle meme)
+    public function setTitulaire(CompteClient $compte): self //(=la classe elle meme)
     {   
         //On vérifie si on a un titulaire
 
-        if($nom != ""){
-            $this->titulaire = $nom;
+        if(isset($compte)){
+            $this->titulaire = $compte;
         }
         return $this;
     }
